@@ -1,0 +1,79 @@
+<!DOCTYPE hyml> 
+<html> 
+
+<head> 
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js"></script> 
+  <style> 
+
+    body { 
+      text-align: center; 
+    } 
+    h1 { 
+      color: green; 
+    } 
+    canvas { 
+      border: 2px solid grey; 
+    } 
+    #newbtn{
+      margin-top: 20px;
+      padding:10px;
+      color: #fff;
+      background: #000; 
+    }
+
+  </style> 
+</head> 
+
+<body> 
+  <center> 
+     <canvas id="canvas"  width="800" height="400"></canvas> 
+     <img style="display: none;" src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScro-vNUrEg9R2O5wKHUdFTKUfao9RZ4qgXg&usqp=CAU" id="my-image" alt=""> 
+
+     <button id="newbtn" onclick="addnewtxt()">Click to add a textbox</button>
+     <button id="newbtn" onclick="addnewimg()">Click to add an image</button>
+     <button id="newbtn" onclick="delnewimg()">Click to delete an image</button>
+     <button id="newbtn" onclick="delnewtxt()">Click to delete a textbox</button>
+  </center>
+
+
+
+  <script> 
+        let text;
+        let fabricImage;
+        var canvas = new fabric.Canvas("canvas"); 
+        var image = document.getElementById('my-image');
+
+
+         function addnewtxt() {
+                text = new fabric.Textbox('Start texting!', { width: 450 }); 
+                canvas.add(text); 
+         }
+
+         function chngstyle() {
+                canvas.add(text).setActiveObject(text);
+                  canvas.getActiveObject().set("fontFamily", 'italic');
+         }
+
+         function delnewtxt() {
+                    
+                     canvas.remove(text); 
+
+             }
+
+         function addnewimg() {
+                fabricImage = new fabric.Image(image); 
+                 canvas.add(fabricImage); 
+
+         }
+         function delnewimg() {
+                
+                 canvas.remove(fabricImage); 
+
+         }
+
+  </script>
+
+
+</body> 
+</html> 
